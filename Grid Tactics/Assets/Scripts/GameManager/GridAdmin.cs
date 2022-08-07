@@ -54,7 +54,26 @@ public class GridAdmin : MonoBehaviour {
 
     //Getting gridpos from world pos
 
+    public Vector2Int GetGridPosFromWorld(Vector3 worldPos) {
 
+        int x = Mathf.FloorToInt(worldPos.x / GridOffsetSpace);
+        int y = Mathf.FloorToInt(worldPos.z / GridOffsetSpace);
+
+        x = Mathf.Clamp(x, 0, width);
+        y = Mathf.Clamp(x, 0, height);
+
+        return new Vector2Int(x, y);
+
+    }
+
+    //getting world pos of grid pos
+    public Vector3 GetWorldPosFromGridPos(Vector2Int gridPos) {
+        float x = gridPos.x * GridOffsetSpace;
+        float y = gridPos.y * GridOffsetSpace;
+
+        return new Vector3(x, 0, y);
+
+    }
 
 
 
